@@ -90,8 +90,23 @@ void InsertValAfterLocSLL(Node **start_ptr, int val, Node * loc){
 temp->next = loc->next;
 loc->next=temp;
 }
-int DeleteBegSLL(Node **start_ptr);
-int DeleteEndSLL(Node **start_ptr);
+int DeleteBegSLL(Node **start_ptr){
+    Node *ptr=*start_ptr;
+    if(NULL==ptr){
+        printf("Overfow( ^ )");
+       
+    }
+    int deleteditem= (*start_ptr)->data;
+    if(ptr->next==NULL){
+       printf("Empty linkled list");
+    }
+    
+    *start_ptr=(*start_ptr)->next;
+ return deleteditem;
+}
+int DeleteEndSLL(Node **start_ptr){
+
+}
 void DeleteValSLL(Node **start_ptr,int val){
     Node *ptr=*start_ptr;
     Node *preptr=NULL;
@@ -113,21 +128,57 @@ void DeleteValSLL(Node **start_ptr,int val){
     preptr->next=ptr->next;
     free(ptr);
 }
-void DeleteValInSortedSLL(Node **start_ptr,int val);
-void DeleteAtLocSLL(Node **start_ptr, Node * loc);
+void DeleteValInSortedSLL(Node **start_ptr,int val){
+Node *ptr=*start_ptr;
+if(NULL==ptr){
+    printf("Empty linked list");
+    return;
+}
+if(ptr->data == val){
+    *start_ptr=(*start_ptr)->next;
+    free(ptr);
+    return;
+}
+Node *preptr=NULL;
+while(ptr!=NULL && ptr->data!=val){
+    preptr=ptr;
+    ptr=ptr->next;
+}
+if(ptr==NULL){
+    printf("Element not found.");
+    return;
+}
+preptr->next=ptr->next;
+free(ptr);
+}
+void DeleteAtLocSLL(Node **start_ptr, Node * loc){
+Node *ptr=*start_ptr;
+
+}
 
 
 
 void PrintListSLL(Node *head)
 {
 	Node * ptr= head;
-	while (ptr)
+	while (ptr!=NULL)
 	{
-		printf ("%d\t", ptr-> data);
+		printf ("%d\t-> ", ptr-> data);
 		ptr = ptr -> next;
 	}
+    printf("NULL");
 }
-int  CountNodesSLL(Node *head);
+int  CountNodesSLL(Node *head){
+    int count=0;
+    if(NULL==head){
+        printf("Empty linked list.");
+    }
+    while(head!=NULL){
+        head=head->next;
+        count++;
+    }
+    return count;
+}
 int  CountOfValSLL(Node *head, int val);
 
 Node * SearchVal(Node *head, int val);
@@ -175,4 +226,13 @@ PrintListSLL(start);
    printf("\nAfter inserting  number 92 after 5\n");
 
     PrintListSLL(start);
+    printf("\n after deletinh begining node\n");
+    int item=DeleteBegSLL(&start);
+    printf(" deleted - %d \n",item);
+    PrintListSLL(start);
+    DeleteValInSortedSLL(&start,7);
+    printf("\n After deleting 7\n");
+    PrintListSLL(start);
+    int count=CountNodesSLL(start);
+    printf("\n Number of nodes in linked list after following instructions is %d",count);
 }
