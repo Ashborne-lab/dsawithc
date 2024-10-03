@@ -36,6 +36,7 @@ void peek(){
     }
     while(front<=rear){
     printf("%d\t",queue[front]);
+    front++;
     }
 }
 int main(){
