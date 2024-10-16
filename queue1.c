@@ -10,11 +10,12 @@ void push(int val){
         printf("Queue overflow");
         return;
     }
-    rear++;
-    queue[rear]=val;
-    if(front==-1){
+     if(front==-1 && rear==-1){
         front=0;
     }
+    rear++;
+    queue[rear]=val;
+   
 }
 int pop(){
     if (front ==-1 || rear==-1){
