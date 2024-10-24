@@ -6,15 +6,16 @@ int queue[MAX];
 int rear=-1;
 int  front=-1;
 void push(int val){
-    if(rear>MAX-1){
+    if(rear==MAX-1){
         printf("Queue overflow");
         return;
     }
-     if(front==-1 && rear==-1){
-        front=0;
-    }
+     
     rear++;
     queue[rear]=val;
+    if(front==-1 ){
+        front=0;
+    }
    
 }
 int pop(){

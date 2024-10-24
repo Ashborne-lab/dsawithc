@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include<ctype.h>
+#include<string.h>
 #define MAX 100
 int stack[MAX];
 int top=-1;
@@ -8,7 +9,7 @@ void push(int val){
         printf("Stack is full");
         return;
     }
-    stack[top++]=val;
+    stack[++top]=val;
 }
 int pop(){
     if(top==-1){
@@ -25,13 +26,14 @@ int peek(){
     return stack[top];
 }
 char isoperator(char ch){
-    return ch=="+" || ch == '-' || ch == '*' || ch == '/';
+    return ch=='+'|| ch == '-' || ch == '*' || ch == '/';
 }
 void postfixevaluation(char *express){
     int operand1,operand2,result;
     for(int i=0;i<strlen(express);i++){
         char ch=express[i];
         if(isalnum(ch)){
+            ch=ch-'0';
             push(ch);
         }
         else{
@@ -53,7 +55,7 @@ void postfixevaluation(char *express){
                     break;
                 default:
                     printf("Unknown operator: %c\n", ch);
-                    return -1;
+                    return;
             }
             push(result); 
           }
