@@ -102,6 +102,39 @@ int height(tnode* root){
     }
     return 1+max(height(ptr->left),height(ptr->right));
 }
+void printInorder(tnode* ptr) 
+{ 
+     if (ptr == NULL) 
+          return; 
+  
+     /* first recur on left child */
+     printInorder(ptr->left); 
+  
+     /* then print the info of ptr */
+     printf("%d ", ptr->info);   
+  
+     /* now recur on right child */
+     printInorder(ptr->right); 
+} 
+
+
+
+/* Given a binary tree, print its nodes according to the 
+  "bottom-up" postorder traversal. */
+void printPostorder(tnode* ptr) 
+{ 
+     if (ptr == NULL) 
+        return; 
+  
+     // first recur on left subtree 
+     printPostorder(ptr->left); 
+  
+     // then recur on right subtree 
+     printPostorder(ptr->right); 
+  
+     // now deal with the ptr 
+     printf("%d ", ptr->info); 
+}
 
 int main() 
 { 
@@ -120,6 +153,10 @@ int main()
 
 	printf("\nPreorder traversal of binary tree is \n"); 
 	printPreorder(root); 
+	printf("\nPreorder traversal of binary tree is \n"); 
+	printInorder(root); 
+	printf("\nPreorder traversal of binary tree is \n"); 
+	printPostorder(root); 
     int heigh=height(root);
     printf("\n The height of the tree is %d",heigh);
 	

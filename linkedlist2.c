@@ -196,6 +196,9 @@ int main()
    InsertEndSLL(&start, 3);
    InsertEndSLL(&start, 5);
    InsertEndSLL(&start, 6);
+
+printf("Insertion at end linked list:\n");
+PrintListSLL(start);
 InsertInSortedSLL(&start,4);
 printf("Insertion at sorted linked list:\n");
 PrintListSLL(start);
