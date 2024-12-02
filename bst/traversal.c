@@ -54,8 +54,6 @@ tnode* createNode(int val)
      return(new_Node); 
 }
 
-
-
 void iterativepreorder(tnode* ptr){
 if(ptr==NULL)return;
 push(ptr);
